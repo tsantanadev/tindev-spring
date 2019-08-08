@@ -4,8 +4,6 @@ import br.com.thiagosousa.tindev.controllers.dtos.DevForm
 import br.com.thiagosousa.tindev.controllers.dtos.DevRequest
 import br.com.thiagosousa.tindev.models.Dev
 import br.com.thiagosousa.tindev.repositorys.DevRepository
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -17,21 +15,21 @@ import org.springframework.web.client.getForObject
 class DevController(val repository: DevRepository) {
 
     @GetMapping
-    fun index(@RequestHeader("devId") devId: String, pageable: Pageable): Page<Dev> {
-        val loggedDev = repository.findById(devId).get()
+    fun index(@RequestHeader("user") user: String): ResponseEntity<List<Dev>> {
+        val loggedDev = repository.findById(user).get()
 
-        val devs = repository.findAll(pageable)
+        val devs = repository.findAll()
 
         devs.removeAll {
-            loggedDev.id.equals(it.id) || loggedDev.likes.contains(it.id) || loggedDev.dislikes.contains(it.id)
+            loggedDev._id.equals(it._id) || loggedDev.likes.contains(it._id) || loggedDev.dislikes.contains(it._id)
         }
 
-        return devs
+        return ResponseEntity.ok().body(devs)
     }
 
     @PostMapping
     fun insert(@RequestBody devRequest: DevRequest): ResponseEntity<Dev>{
-        val registeredDev = repository.findByUsername(devRequest.username)
+        val registeredDev = repository.findByUser(devRequest.username)
 
         if (registeredDev.isPresent)
             return ResponseEntity.ok(registeredDev.get())
