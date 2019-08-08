@@ -12,8 +12,8 @@ data class Dev(
         val user: String,
         val bio: String? = null,
         val avatar: String,
-        var likes: List<String> = ArrayList(),
-        var dislikes: List<String> = ArrayList()
+        val likes: MutableList<String> = mutableListOf(),
+        val dislikes: MutableList<String> = mutableListOf()
 ){
         constructor(devForm: DevForm) : this(
                 name = devForm.name,
