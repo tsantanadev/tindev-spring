@@ -6,7 +6,7 @@ Tindev is a project from ["Semana Omnistack"](https://rocketseat.com.br/week-8/i
 
 ## Build
 
-Run `./gradlew build` in terminal
+`./gradlew build`
 
 ## Run
 
@@ -16,4 +16,4 @@ Run `./gradlew build` in terminal
 
 ### Docker
 
-`docker run thiagosousa/tindev`
+`docker run thiagosousa/tindev-spring`
