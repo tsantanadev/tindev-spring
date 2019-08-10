@@ -9,5 +9,4 @@ data class Repository(
         val fork: Boolean,
         val language: String?,
         val name: String
-) {
-}
+)

@@ -16,10 +16,12 @@ data class Dev(
         val dislikes: MutableList<String> = mutableListOf(),
         val languages: MutableMap<String, Long> = hashMapOf()
 ){
-        constructor(devForm: DevForm) : this(
+        constructor(devForm: DevForm, languages: MutableMap<String, Long>) : this(
                 name = devForm.name,
                 user = devForm.login,
                 avatar = devForm.avatar_url,
-                bio = devForm.bio
+                bio = devForm.bio,
+                languages = languages
+
         )
 }
