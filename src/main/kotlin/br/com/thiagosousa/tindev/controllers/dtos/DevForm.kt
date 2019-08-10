@@ -7,5 +7,6 @@ data class DevForm(
         val name: String,
         val login: String,
         val bio: String? = "",
-        val avatar_url: String
+        val avatar_url: String,
+        val repos_url: String
 )

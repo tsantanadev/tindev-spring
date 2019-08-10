@@ -13,7 +13,8 @@ data class Dev(
         val bio: String? = null,
         val avatar: String,
         val likes: MutableList<String> = mutableListOf(),
-        val dislikes: MutableList<String> = mutableListOf()
+        val dislikes: MutableList<String> = mutableListOf(),
+        val languages: MutableMap<String, Long> = hashMapOf()
 ){
         constructor(devForm: DevForm) : this(
                 name = devForm.name,
