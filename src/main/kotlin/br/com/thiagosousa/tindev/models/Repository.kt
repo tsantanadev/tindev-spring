@@ -7,6 +7,5 @@ data class Repository(
         val id: Long,
         val languages_url: String,
         val fork: Boolean,
-        val language: String?,
         val name: String
 )

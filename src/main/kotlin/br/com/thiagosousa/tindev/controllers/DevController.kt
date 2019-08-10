@@ -2,7 +2,6 @@ package br.com.thiagosousa.tindev.controllers
 
 import br.com.thiagosousa.tindev.controllers.dtos.DevDTO
 import br.com.thiagosousa.tindev.controllers.dtos.DevRequest
-import br.com.thiagosousa.tindev.models.Dev
 import br.com.thiagosousa.tindev.services.DevService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.*
 class DevController(val service: DevService) {
 
     @GetMapping
-    fun index(@RequestHeader("user") user: String): ResponseEntity<List<Dev>> {
+    fun index(@RequestHeader("user") user: String): ResponseEntity<List<DevDTO>> {
         val devList = service.listAll(user)
         return ResponseEntity.ok().body(devList)
     }

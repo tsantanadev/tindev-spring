@@ -7,7 +7,8 @@ data class DevDTO(
         val name: String,
         val user: String,
         val bio: String? = "",
-        val avatar: String
+        val avatar: String,
+        var matchin: Int = 0
         ){
     constructor(dev: Dev) : this(
             dev._id,
